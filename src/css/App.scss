@@ -228,7 +228,7 @@ div {
     }
     .content_4 {
       width: 300vw;
-      background-color: #dfd6cf;
+      background-color: #fff;
       display: flex;
       justify-content: flex-start;
 
@@ -242,14 +242,14 @@ div {
       .stage_4-2 {
         width: 100vw;
         min-width: 100vw;
-        background-color: lighten(#dfd6cf, 5%);
+        background-color: #fff;
         display: flex;
         justify-content: center;
       }
       .stage_4-3 {
         width: 100vw;
         min-width: 100vw;
-        background-color: lighten(#dfd6cf, 10%);
+        background-color: #fff;
         display: flex;
         justify-content: center;
       }
@@ -465,7 +465,7 @@ article {
   }
 }
 
-/* stage_3-1 */
+/* stage_3 */
 
 .stage_3-1,
 .stage_3-2,
@@ -480,18 +480,61 @@ article {
     align-items: center;
     .media_wrapper {
       margin-right: 100px;
+      position: relative;
+      .clickVideo {
+        position: absolute;
+        top: -20px;
+        right: 0;
+        color: white;
+      }
       video {
         border-radius: 10px;
-        -webkit-box-shadow: 0px 0px 33px 16px rgba(255, 255, 255, 0.8);
-        box-shadow: 0px 0px 33px 16px rgba(255, 255, 255, 0.8);
+        // -webkit-box-shadow: 0px 0px 33px 16px rgba(255, 255, 255, 0.8);
+        // box-shadow: 0px 0px 33px 16px rgba(255, 255, 255, 0.8);
+        cursor: pointer;
+        margin-bottom: 30px;
       }
       .images_wrapper {
         width: 600px;
         display: flex;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         img {
-          width: 200px;
-          height: 150px;
+          width: 198px;
+          border: 1px solid #777;
+        }
+        .big_image {
+          width: 600px;
+          position: absolute;
+          left: 0;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: fill;
+          }
+          &.pocari {
+            bottom: 450px;
+            height: 550px;
+          }
+          &.coupang {
+            bottom: 470px;
+            height: 530px;
+          }
+          &.xtlv1 {
+            bottom: 345px;
+            height: 500px;
+          }
+          &.xtladmin {
+            bottom: 230px;
+            height: 400px;
+          }
+          &.xtlv2 {
+            bottom: 375px;
+            height: 400px;
+          }
+          &.webinar {
+            bottom: 250px;
+            height: 400px;
+          }
         }
       }
     }
@@ -508,6 +551,9 @@ article {
         border-bottom: 2px solid #777;
         font-size: 35px;
         font-weight: 900;
+      }
+      & > section > p {
+        line-height: 30px;
       }
       section > div {
         display: flex;
@@ -535,6 +581,252 @@ article {
             height: 30px;
             width: 30px;
             margin: 0 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* stage_4-1 */
+
+.stage_4-1 {
+  .content_wrapper {
+    border: 1px solid black;
+    width: 100vw;
+    padding-left: 30px;
+    .time_line_header {
+      margin-top: 100px;
+      width: 100%;
+      min-width: 1200px;
+      display: flex;
+      justify-content: space-around;
+      .time_line_year {
+        flex: 2 1 0;
+        margin: 0 auto;
+        width: 300px;
+        min-width: 300px;
+        max-width: 300px;
+      }
+      .time_line_month {
+        flex: 1 1 0;
+      }
+    }
+
+    .time_line_list {
+      // font-family: 'NotoSansKR';
+      font-weight: 100;
+      display: flex;
+      width: 100%;
+      min-width: 1200px;
+      height: calc((100vh - 260px) / 24);
+      img {
+        height: 100%;
+      }
+      .time_line_label {
+        flex: 2 1 0;
+        width: 300px;
+        min-width: 300px;
+        max-width: 300px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        opacity: 0;
+        transition: all 5s;
+        line-height: 20px;
+        &.on {
+          opacity: 1;
+        }
+      }
+      .time_line_item_wrapper {
+        flex: 12 1 0;
+        height: 20px;
+        margin: auto 0;
+        position: relative;
+        .time_line_item {
+          position: absolute;
+          top: 0;
+          background-color: #000;
+          height: 100%;
+          border-radius: 10px;
+          &.book1 {
+            left: 20%; // 시작날짜
+            width: 0;
+            transition: width 3s ease-in-out;
+            &.on {
+              width: 20%; // 기간
+            }
+          }
+          &.book2 {
+            left: 30%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 20%; // 기간
+            }
+          }
+          &.book3 {
+            left: 40%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 10%; // 기간
+            }
+          }
+          &.book4 {
+            left: 60%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 30%; // 기간
+            }
+          }
+          &.book5 {
+            left: 70%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 30%; // 기간
+            }
+          }
+          &.book6 {
+            left: 90%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 11%; // 기간
+            }
+          }
+          &.book7 {
+            left: 90%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 11%; // 기간
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* stage_4-2 */
+
+.stage_4-2 {
+  .content_wrapper {
+    border: 1px solid black;
+    width: 100vw;
+    padding-left: 30px;
+    .time_line_header {
+      margin-top: 100px;
+      width: 100%;
+      min-width: 1200px;
+      display: flex;
+      justify-content: space-around;
+      .time_line_year {
+        flex: 2 1 0;
+        margin: 0 auto;
+        width: 300px;
+        min-width: 300px;
+        max-width: 300px;
+      }
+      .time_line_month {
+        flex: 1 1 0;
+      }
+    }
+
+    .time_line_list {
+      overflow: hidden;
+      display: flex;
+      width: 100%;
+      min-width: 1200px;
+      height: calc((100vh - 260px) / 24);
+      img {
+        height: 100%;
+      }
+      .time_line_label {
+        flex: 2 1 0;
+        width: 300px;
+        min-width: 300px;
+        max-width: 300px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        opacity: 0;
+        transition: all 5s;
+        &.on {
+          opacity: 1;
+        }
+      }
+      .time_line_item_wrapper {
+        flex: 12 1 0;
+        height: 20px;
+        margin: auto 0;
+        position: relative;
+        .time_line_item {
+          position: absolute;
+          top: 0;
+          background-color: #000;
+          height: 100%;
+          border-radius: 10px;
+          &.book8 {
+            left: 20%; // 시작날짜
+            width: 0;
+            transition: width 3s ease-in-out;
+            &.on {
+              width: 20%; // 기간
+            }
+          }
+          &.book9 {
+            left: 30%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 20%; // 기간
+            }
+          }
+          &.book10 {
+            left: 40%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 10%; // 기간
+            }
+          }
+          &.book11 {
+            left: 60%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 30%; // 기간
+            }
+          }
+          &.book12 {
+            left: 70%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 30%; // 기간
+            }
+          }
+          &.book13 {
+            left: 90%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 11%; // 기간
+            }
+          }
+          &.book14 {
+            left: 90%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 11%; // 기간
+            }
           }
         }
       }

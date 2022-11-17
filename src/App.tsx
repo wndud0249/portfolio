@@ -43,6 +43,50 @@ import pocariImg3 from './css/images/pocari/pocari3.png';
 import pocariImg4 from './css/images/pocari/pocari4.png';
 import pocariImg5 from './css/images/pocari/pocari5.png';
 import pocariImg6 from './css/images/pocari/pocari6.png';
+import coupangImg1 from './css/images/coupang/coupang1.png';
+import coupangImg2 from './css/images/coupang/coupang2.png';
+import coupangImg3 from './css/images/coupang/coupang3.png';
+import coupangImg4 from './css/images/coupang/coupang4.png';
+import coupangImg5 from './css/images/coupang/coupang5.png';
+import coupangImg6 from './css/images/coupang/coupang6.png';
+import xtlv1Img1 from './css/images/xtlv1/xtlv1_1.png';
+import xtlv1Img2 from './css/images/xtlv1/xtlv1_2.png';
+import xtlv1Img3 from './css/images/xtlv1/xtlv1_3.png';
+import xtlv1Img4 from './css/images/xtlv1/xtlv1_4.png';
+import xtlv1Img5 from './css/images/xtlv1/xtlv1_5.png';
+import xtlv1Img6 from './css/images/xtlv1/xtlv1_6.png';
+import xtlAdminImg1 from './css/images/xtlAdmin/admin1.png';
+import xtlAdminImg2 from './css/images/xtlAdmin/admin2.png';
+import xtlAdminImg3 from './css/images/xtlAdmin/admin3.png';
+import xtlAdminImg4 from './css/images/xtlAdmin/admin4.png';
+import xtlAdminImg5 from './css/images/xtlAdmin/admin5.png';
+import xtlAdminImg6 from './css/images/xtlAdmin/admin6.png';
+import xtlv2Img1 from './css/images/xtlv2/xtlv2_1.png';
+import xtlv2Img2 from './css/images/xtlv2/xtlv2_2.png';
+import xtlv2Img3 from './css/images/xtlv2/xtlv2_3.png';
+import xtlv2Img4 from './css/images/xtlv2/xtlv2_4.png';
+import xtlv2Img5 from './css/images/xtlv2/xtlv2_5.png';
+import xtlv2Img6 from './css/images/xtlv2/xtlv2_6.png';
+import webinarImg1 from './css/images/webinar/webinar1.png';
+import webinarImg2 from './css/images/webinar/webinar2.png';
+import webinarImg3 from './css/images/webinar/webinar3.png';
+import webinarImg4 from './css/images/webinar/webinar4.png';
+import webinarImg5 from './css/images/webinar/webinar5.png';
+import webinarImg6 from './css/images/webinar/webinar6.png';
+import js1gradeBookImg from './css/images/books/js1grade.png';
+import django1BookImg from './css/images/books/django1.png';
+import django2BookImg from './css/images/books/django2.png';
+import modernJsBookImg from './css/images/books/modernjs.png';
+import perfectJsBookImg from './css/images/books/perfectjs.png';
+import reactBookImg from './css/images/books/reactBook.png';
+import itBookImg from './css/images/books/it.png';
+import yalcoBookImg from './css/images/books/yalco.png';
+import computerBookImg from './css/images/books/computer.png';
+import jsTutorialImg from './css/images/books/jstutorial.png';
+import sangcoImg from './css/images/books/sangco.png';
+import fastCampusImg from './css/images/books/fastcampus.png';
+import dreamCodingImg from './css/images/books/dream.png';
+import codingAppleImg from './css/images/books/apple.png';
 
 function App() {
   const [focusedStage, setFocusedStage] = useState('');
@@ -52,6 +96,7 @@ function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalTarget, setModalTarget] = useState('');
   const [modalContents, setModalContents] = useState('');
+  const [bigImageSrc, setBigImageSrc] = useState('');
   const letterArr = useRef<string[]>();
   const stageData = useRef(focusedStage);
   const modalOpenRef = useRef(modalOpen);
@@ -151,7 +196,7 @@ function App() {
   }, []);
 
   const onClickHeaderMenu = (e: any) => {
-    setFocusedStage(`.${e.currentTarget.dataset.menu}`);
+    setFocusedStage(`${e.currentTarget.dataset.menu}`);
   };
 
   console.log(focusedStage);
@@ -176,6 +221,9 @@ function App() {
       { stageName: 'stage_3-4', text: 'PROJECT - 4xtl.com admin', color: 'white' },
       { stageName: 'stage_3-5', text: 'PROJECT - 4xtl.com V2', color: 'white' },
       { stageName: 'stage_3-6', text: 'PROJECT - webinar', color: 'white' },
+      { stageName: 'stage_4-1', text: 'STUDIED - 2020', color: 'black' },
+      { stageName: 'stage_4-2', text: 'STUDIED - 2021', color: 'black' },
+      { stageName: 'stage_4-3', text: 'STUDIED - 2022', color: 'black' },
     ];
     const letter = letterObjs.filter((obj) => obj.stageName === focusedStage)[0].text.split('');
     if (typingTimeOut) clearTimeout(typingTimeOut);
@@ -236,7 +284,6 @@ function App() {
     setModalContents(pocariVideo);
   };
   const onClickVideo = (e: React.MouseEvent<HTMLDivElement>) => {
-    console.log('clicked');
     setModalOpen(true);
     modalOpenRef.current = true;
     setModalTarget('projectVideo');
@@ -264,6 +311,19 @@ function App() {
     }
   };
 
+  const onMouseOverImage = (e: React.MouseEvent<HTMLDivElement>) => {
+    // e.currentTarget === div.image_wrapper , e.target === image
+    if (e.target instanceof HTMLImageElement) {
+      setBigImageSrc(e.target.src);
+    }
+  };
+
+  const onMouseLeaveImage = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target instanceof HTMLImageElement) {
+      setBigImageSrc('');
+    }
+  };
+
   return (
     <div className="App">
       <div className="main_wrapper">
@@ -275,16 +335,16 @@ function App() {
               </div>
               <div className="header_other_menu">
                 <div className="other_menu_item" onClick={onClickHeaderMenu} data-menu="stage_2-1">
-                  skills
+                  SKILLS
                 </div>
                 <div className="other_menu_item" onClick={onClickHeaderMenu} data-menu="stage_3-1">
-                  projects
+                  PROJECTS
                 </div>
                 <div className="other_menu_item" onClick={onClickHeaderMenu} data-menu="stage_4-1">
-                  studied
+                  STUDIED
                 </div>
                 <div className="other_menu_item" onClick={onClickHeaderMenu} data-menu="stage_5-1">
-                  blueprint
+                  CAREER
                 </div>
               </div>
             </div>
@@ -433,19 +493,29 @@ function App() {
           <div className="content_3">
             <div className="stage_3-1">
               <div className="content_wrapper">
-                <div className="media_wrapper" onClick={onClickVideo} data-contents="pocariVideo">
-                  <div className="video_wrapper">
-                    <video controls={false} width="500px" height="auto" muted autoPlay loop>
+                <div className="media_wrapper">
+                  <div className="video_wrapper" onClick={onClickVideo} data-contents="pocariVideo">
+                    <div className="clickVideo">Click !</div>
+                    <video controls={false} width="600px" height="auto" muted autoPlay loop>
                       <source src={pocariVideo} type="video/mp4" />
                     </video>
                   </div>
-                  <div className="images_wrapper">
-                    <img src="" alt="" />
-                    <img src="" alt="" />
-                    <img src="" alt="" />
-                    <img src="" alt="" />
-                    <img src="" alt="" />
-                    <img src="" alt="" />
+                  <div
+                    className="images_wrapper"
+                    onMouseOver={onMouseOverImage}
+                    onMouseLeave={onMouseLeaveImage}
+                  >
+                    {bigImageSrc && (
+                      <div className="big_image pocari">
+                        <img src={bigImageSrc} alt="bigImage" />
+                      </div>
+                    )}
+                    <img src={pocariImg1} alt="pocariImg1" />
+                    <img src={pocariImg2} alt="pocariImg2" />
+                    <img src={pocariImg3} alt="pocariImg3" />
+                    <img src={pocariImg4} alt="pocariImg4" />
+                    <img src={pocariImg5} alt="pocariImg5" />
+                    <img src={pocariImg6} alt="pocariImg6" />
                   </div>
                 </div>
                 <article className="pocari">
@@ -507,10 +577,34 @@ function App() {
             </div>
             <div className="stage_3-2">
               <div className="content_wrapper">
-                <div className="video_wrapper" onClick={onClickVideo} data-contents="coupangVideo">
-                  <video controls={false} width="500px" height="auto" muted autoPlay loop>
-                    <source src={coupangVideo} type="video/mp4" />
-                  </video>
+                <div className="media_wrapper">
+                  <div
+                    className="video_wrapper"
+                    onClick={onClickVideo}
+                    data-contents="coupangVideo"
+                  >
+                    <div className="clickVideo">Click !</div>
+                    <video controls={false} width="600px" height="auto" muted autoPlay loop>
+                      <source src={coupangVideo} type="video/mp4" />
+                    </video>
+                  </div>
+                  <div
+                    className="images_wrapper"
+                    onMouseOver={onMouseOverImage}
+                    onMouseLeave={onMouseLeaveImage}
+                  >
+                    {bigImageSrc && (
+                      <div className="big_image coupang">
+                        <img src={bigImageSrc} alt="bigImage" />
+                      </div>
+                    )}
+                    <img src={coupangImg1} alt="coupangImg1" />
+                    <img src={coupangImg2} alt="coupangImg2" />
+                    <img src={coupangImg3} alt="coupangImg3" />
+                    <img src={coupangImg4} alt="coupangImg4" />
+                    <img src={coupangImg5} alt="coupangImg5" />
+                    <img src={coupangImg6} alt="coupangImg6" />
+                  </div>
                 </div>
                 <article className="coupang">
                   <section>
@@ -569,10 +663,30 @@ function App() {
             </div>
             <div className="stage_3-3">
               <div className="content_wrapper">
-                <div className="video_wrapper" onClick={onClickVideo} data-contents="xtlv1Video">
-                  <video controls={false} width="500px" height="auto" muted autoPlay loop>
-                    <source src={xtlv1Video} type="video/mp4" />
-                  </video>
+                <div className="media_wrapper">
+                  <div className="video-wrapper" onClick={onClickVideo} data-contents="xtlv1Video">
+                    <div className="clickVideo">Click !</div>
+                    <video controls={false} width="600px" height="auto" muted autoPlay loop>
+                      <source src={xtlv1Video} type="video/mp4" />
+                    </video>
+                  </div>
+                  <div
+                    className="images_wrapper"
+                    onMouseOver={onMouseOverImage}
+                    onMouseLeave={onMouseLeaveImage}
+                  >
+                    {bigImageSrc && (
+                      <div className="big_image xtlv1">
+                        <img src={bigImageSrc} alt="bigImage" />
+                      </div>
+                    )}
+                    <img src={xtlv1Img1} alt="xtlv1Img1" />
+                    <img src={xtlv1Img2} alt="xtlv1Img2" />
+                    <img src={xtlv1Img3} alt="xtlv1Img3" />
+                    <img src={xtlv1Img4} alt="xtlv1Img4" />
+                    <img src={xtlv1Img5} alt="xtlv1Img5" />
+                    <img src={xtlv1Img6} alt="xtlv1Img6" />
+                  </div>
                 </div>
                 <article className="4xtl_v1">
                   <section>
@@ -635,10 +749,34 @@ function App() {
             </div>
             <div className="stage_3-4">
               <div className="content_wrapper">
-                <div className="video_wrapper" onClick={onClickVideo} data-contents="xtlAdminVideo">
-                  <video controls={false} width="500px" height="auto" muted autoPlay loop>
-                    <source src={xtlAdminVideo} type="video/mp4" />
-                  </video>
+                <div className="media_wrapper">
+                  <div
+                    className="video_wrapper"
+                    onClick={onClickVideo}
+                    data-contents="xtlAdminVideo"
+                  >
+                    <div className="clickVideo">Click !</div>
+                    <video controls={false} width="600px" height="auto" muted autoPlay loop>
+                      <source src={xtlAdminVideo} type="video/mp4" />
+                    </video>
+                  </div>
+                  <div
+                    className="images_wrapper"
+                    onMouseOver={onMouseOverImage}
+                    onMouseLeave={onMouseLeaveImage}
+                  >
+                    {bigImageSrc && (
+                      <div className="big_image xtladmin">
+                        <img src={bigImageSrc} alt="bigImage" />
+                      </div>
+                    )}
+                    <img src={xtlAdminImg1} alt="xtlAdminImg1" />
+                    <img src={xtlAdminImg2} alt="xtlAdminImg2" />
+                    <img src={xtlAdminImg3} alt="xtlAdminImg3" />
+                    <img src={xtlAdminImg4} alt="xtlAdminImg4" />
+                    <img src={xtlAdminImg5} alt="xtlAdminImg5" />
+                    <img src={xtlAdminImg6} alt="xtlAdminImg6" />
+                  </div>
                 </div>
                 <article className="4xtl_admin">
                   <section>
@@ -701,10 +839,30 @@ function App() {
             </div>
             <div className="stage_3-5">
               <div className="content_wrapper">
-                <div className="video_wrapper" onClick={onClickVideo} data-contents="xtlv2Video">
-                  <video controls={false} width="500px" height="auto" muted autoPlay loop>
-                    <source src={xtlv2Video} type="video/mp4" />
-                  </video>
+                <div className="media_wrapper">
+                  <div className="video_wrapper" onClick={onClickVideo} data-contents="xtlv2Video">
+                    <div className="clickVideo">Click !</div>
+                    <video controls={false} width="600px" height="auto" muted autoPlay loop>
+                      <source src={xtlv2Video} type="video/mp4" />
+                    </video>
+                  </div>
+                  <div
+                    className="images_wrapper"
+                    onMouseOver={onMouseOverImage}
+                    onMouseLeave={onMouseLeaveImage}
+                  >
+                    {bigImageSrc && (
+                      <div className="big_image xtlv2">
+                        <img src={bigImageSrc} alt="bigImage" />
+                      </div>
+                    )}
+                    <img src={xtlv2Img1} alt="xtlv2Img1" />
+                    <img src={xtlv2Img2} alt="xtlv2Img2" />
+                    <img src={xtlv2Img3} alt="xtlv2Img3" />
+                    <img src={xtlv2Img4} alt="xtlv2Img4" />
+                    <img src={xtlv2Img5} alt="xtlv2Img5" />
+                    <img src={xtlv2Img6} alt="xtlv2Img6" />
+                  </div>
                 </div>
                 <article className="4xtl_v2">
                   <section>
@@ -759,10 +917,34 @@ function App() {
             </div>
             <div className="stage_3-6">
               <div className="content_wrapper">
-                <div className="video_wrapper" onClick={onClickVideo} data-contents="webinarVideo">
-                  <video controls={false} width="500px" height="auto" muted autoPlay loop>
-                    <source src={webinarVideo} type="video/mp4" />
-                  </video>
+                <div className="media_wrapper">
+                  <div
+                    className="video_wrapper"
+                    onClick={onClickVideo}
+                    data-contents="webinarVideo"
+                  >
+                    <div className="clickVideo">Click !</div>
+                    <video controls={false} width="600px" height="auto" muted autoPlay loop>
+                      <source src={webinarVideo} type="video/mp4" />
+                    </video>
+                  </div>
+                  <div
+                    className="images_wrapper"
+                    onMouseOver={onMouseOverImage}
+                    onMouseLeave={onMouseLeaveImage}
+                  >
+                    {bigImageSrc && (
+                      <div className="big_image webinar">
+                        <img src={bigImageSrc} alt="bigImage" />
+                      </div>
+                    )}
+                    <img src={webinarImg1} alt="webinarImg1" />
+                    <img src={webinarImg2} alt="webinarImg2" />
+                    <img src={webinarImg3} alt="webinarImg3" />
+                    <img src={webinarImg4} alt="webinarImg4" />
+                    <img src={webinarImg5} alt="webinarImg5" />
+                    <img src={webinarImg6} alt="webinarImg6" />
+                  </div>
                 </div>
                 <article className="4xtl_admin">
                   <section>
@@ -830,12 +1012,782 @@ function App() {
           <div className="content_4" ref={divRef}>
             <div className="stage_4-1">
               <div className="content_wrapper">
-                <div>stage_4-1 공부는 어떻게 해왔나요?</div>
+                <div className="time_line_header">
+                  <div className="time_line_year">2020</div>
+                  <div className="time_line_month">JAN</div>
+                  <div className="time_line_month">FEB</div>
+                  <div className="time_line_month">MAR</div>
+                  <div className="time_line_month">APR</div>
+                  <div className="time_line_month">MAY</div>
+                  <div className="time_line_month">JUN</div>
+                  <div className="time_line_month">JUL</div>
+                  <div className="time_line_month">AUG</div>
+                  <div className="time_line_month">SEP</div>
+                  <div className="time_line_month">OCT</div>
+                  <div className="time_line_month">NOV</div>
+                  <div className="time_line_month">DEC</div>
+                </div>
+
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={js1gradeBookImg} alt="자바스크립트 1학년" />
+                    <span>Javascript 1학년</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book1'
+                          : 'time_line_item book1'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img
+                      src={django1BookImg}
+                      alt="django를 활용한 쉽고 빠른 웹개발 파이썬 웹프로그래밍"
+                    />
+                    <img
+                      src={django2BookImg}
+                      alt="django를 활용한 쉽고 빠른 웹개발 파이썬 웹프로그래밍"
+                    />
+                    <span>django를 활용한 쉽고 빠른 웹개발 파이썬 웹프로그래밍</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book2'
+                          : 'time_line_item book2'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={modernJsBookImg} alt="모던자바스크립트 Deep Dive" />
+                    <span>모던자바스크립트 Deep Dive</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book3'
+                          : 'time_line_item book3'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={perfectJsBookImg} alt="자바스크립트 완벽 가이드" />
+                    <span>자바스크립트 완벽 가이드</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book4'
+                          : 'time_line_item book4'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={reactBookImg} alt="리액트를 다루는 기술" />
+                    <span>리액트를 다루는 기술</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book5'
+                          : 'time_line_item book5'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={itBookImg} alt="개발자가 되기 위해 꼭 알아야 하는 IT 용어" />
+                    <span>개발자가 되기 위해 꼭 알아야 하는 IT 용어</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book6'
+                          : 'time_line_item book6'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={yalcoBookImg} alt="혼자 공부하는 얄팍한 코딩 지식" />
+                    <span>혼자 공부하는 얄팍한 코딩 지식</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book7'
+                          : 'time_line_item book7'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={computerBookImg} alt="그래서 컴퓨터는 어떻게 동작하나요?" />
+                    <span>그래서 컴퓨터는 어떻게 동작하나요?</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book8'
+                          : 'time_line_item book8'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={reactImg} alt="react 공식문서" />
+                    <span>react 공식문서</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book8'
+                          : 'time_line_item book8'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={nextJsImg} alt="nextjs 공식문서" />
+                    <span>nextjs 공식문서</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book9'
+                          : 'time_line_item book9'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={jsTutorialImg} alt="웹문서 - 모던 javascript 튜토리얼" />
+                    <span>웹문서 - 모던 javascript 튜토리얼</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book10'
+                          : 'time_line_item book10'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={sangcoImg} alt="생활코딩 - html/css" />
+                    <span>생활코딩 - html/css</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book11'
+                          : 'time_line_item book11'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={sangcoImg} alt="생활코딩 - js" />
+                    <span>생활코딩 - js</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book12'
+                          : 'time_line_item book12'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={sangcoImg} alt="생활코딩 - git" />
+                    <span>생활코딩 - git</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book13'
+                          : 'time_line_item book13'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={sangcoImg} alt="생활코딩 - 리눅스" />
+                    <span>생활코딩 - 리눅스</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book14'
+                          : 'time_line_item book14'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img
+                      src={fastCampusImg}
+                      alt="패캠 - 한번에 끝내는 프론트엔드 개발 초격차 패키지"
+                    />
+                    <span>패캠 - 한번에 끝내는 프론트엔드 개발 초격차 패키지</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-3'
+                          ? 'time_line_item on book15'
+                          : 'time_line_item book15'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={dreamCodingImg} alt="드림코딩 - 깃 마스터과정" />
+                    <span>드림코딩 - 깃 마스터과정</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-3'
+                          ? 'time_line_item on book16'
+                          : 'time_line_item book16'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={dreamCodingImg} alt="드림코딩 - 프론트엔드 필수 브라우저 101" />
+                    <span>드림코딩 - 프론트엔드 필수 브라우저 101</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-3'
+                          ? 'time_line_item on book17'
+                          : 'time_line_item book17'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={codingAppleImg} alt="애플코딩 - html/css" />
+                    <span>애플코딩 - html/css</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-3'
+                          ? 'time_line_item on book18'
+                          : 'time_line_item book18'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={codingAppleImg} alt="애플코딩 - javascript & jquery 기초" />
+                    <span>애플코딩 - javascript & jquery 기초</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-3'
+                          ? 'time_line_item on book19'
+                          : 'time_line_item book19'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={codingAppleImg} alt="애플코딩 - javascript es6" />
+                    <span>애플코딩 - javascript es6</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-3'
+                          ? 'time_line_item on book20'
+                          : 'time_line_item book20'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={codingAppleImg} alt="애플코딩 - nodejs + mongoDB" />
+                    <span>애플코딩 - nodejs + mongoDB</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-3'
+                          ? 'time_line_item on book21'
+                          : 'time_line_item book21'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={codingAppleImg} alt="애플코딩 - react" />
+                    <span>애플코딩 - react</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-3'
+                          ? 'time_line_item on book22'
+                          : 'time_line_item book22'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={codingAppleImg} alt="애플코딩 - typescript" />
+                    <span>애플코딩 - typescript</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-3'
+                          ? 'time_line_item on book23'
+                          : 'time_line_item book23'
+                      }
+                    ></div>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="stage_4-2">
               <div className="content_wrapper">
-                <div>stage_4-2</div>
+                <div className="time_line_header">
+                  <div className="time_line_year">2021</div>
+                  <div className="time_line_month">JAN</div>
+                  <div className="time_line_month">FEB</div>
+                  <div className="time_line_month">MAR</div>
+                  <div className="time_line_month">APR</div>
+                  <div className="time_line_month">MAY</div>
+                  <div className="time_line_month">JUN</div>
+                  <div className="time_line_month">JUL</div>
+                  <div className="time_line_month">AUG</div>
+                  <div className="time_line_month">SEP</div>
+                  <div className="time_line_month">OCT</div>
+                  <div className="time_line_month">NOV</div>
+                  <div className="time_line_month">DEC</div>
+                </div>
+
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={js1gradeBookImg} alt="자바스크립트 1학년" />
+                    <span>Javascript 1학년</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book1'
+                          : 'time_line_item book1'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img
+                      src={django1BookImg}
+                      alt="django를 활용한 쉽고 빠른 웹개발 파이썬 웹프로그래밍"
+                    />
+                    <img
+                      src={django2BookImg}
+                      alt="django를 활용한 쉽고 빠른 웹개발 파이썬 웹프로그래밍"
+                    />
+                    <span>django를 활용한 쉽고 빠른 웹개발 파이썬 웹프로그래밍</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book2'
+                          : 'time_line_item book2'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={modernJsBookImg} alt="모던자바스크립트 Deep Dive" />
+                    <span>모던자바스크립트 Deep Dive</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book3'
+                          : 'time_line_item book3'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={perfectJsBookImg} alt="자바스크립트 완벽 가이드" />
+                    <span>자바스크립트 완벽 가이드</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book4'
+                          : 'time_line_item book4'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={reactBookImg} alt="리액트를 다루는 기술" />
+                    <span>리액트를 다루는 기술</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book5'
+                          : 'time_line_item book5'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={itBookImg} alt="개발자가 되기 위해 꼭 알아야 하는 IT 용어" />
+                    <span>개발자가 되기 위해 꼭 알아야 하는 IT 용어</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book6'
+                          : 'time_line_item book6'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={yalcoBookImg} alt="혼자 공부하는 얄팍한 코딩 지식" />
+                    <span>혼자 공부하는 얄팍한 코딩 지식</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book7'
+                          : 'time_line_item book7'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={computerBookImg} alt="그래서 컴퓨터는 어떻게 동작하나요?" />
+                    <span>그래서 컴퓨터는 어떻게 동작하나요?</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book8'
+                          : 'time_line_item book8'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={reactImg} alt="react 공식문서" />
+                    <span>react 공식문서</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book9'
+                          : 'time_line_item book9'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={nextJsImg} alt="nextjs 공식문서" />
+                    <span>nextjs 공식문서</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book10'
+                          : 'time_line_item book10'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={jsTutorialImg} alt="웹문서 - 모던 javascript 튜토리얼" />
+                    <span>웹문서 - 모던 javascript 튜토리얼</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book11'
+                          : 'time_line_item book11'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={sangcoImg} alt="생활코딩 - html/css" />
+                    <span>생활코딩 - html/css</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book13'
+                          : 'time_line_item book13'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={sangcoImg} alt="생활코딩 - js" />
+                    <span>생활코딩 - js</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book14'
+                          : 'time_line_item book14'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={sangcoImg} alt="생활코딩 - git" />
+                    <span>생활코딩 - git</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book1'
+                          : 'time_line_item book1'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={sangcoImg} alt="생활코딩 - 리눅스" />
+                    <span>생활코딩 - 리눅스</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book1'
+                          : 'time_line_item book1'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img
+                      src={fastCampusImg}
+                      alt="패캠 - 한번에 끝내는 프론트엔드 개발 초격차 패키지"
+                    />
+                    <span>패캠 - 한번에 끝내는 프론트엔드 개발 초격차 패키지</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book1'
+                          : 'time_line_item book1'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={dreamCodingImg} alt="드림코딩 - 깃 마스터과정" />
+                    <span>드림코딩 - 깃 마스터과정</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book1'
+                          : 'time_line_item book1'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={dreamCodingImg} alt="드림코딩 - 프론트엔드 필수 브라우저 101" />
+                    <span>드림코딩 - 프론트엔드 필수 브라우저 101</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book1'
+                          : 'time_line_item book1'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={codingAppleImg} alt="애플코딩 - html/css" />
+                    <span>애플코딩 - html/css</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book1'
+                          : 'time_line_item book1'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={codingAppleImg} alt="애플코딩 - javascript & jquery 기초" />
+                    <span>애플코딩 - javascript & jquery 기초</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book1'
+                          : 'time_line_item book1'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={codingAppleImg} alt="애플코딩 - javascript es6" />
+                    <span>애플코딩 - javascript es6</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book1'
+                          : 'time_line_item book1'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={codingAppleImg} alt="애플코딩 - nodejs + mongoDB" />
+                    <span>애플코딩 - nodejs + mongoDB</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book1'
+                          : 'time_line_item book1'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={codingAppleImg} alt="애플코딩 - react" />
+                    <span>애플코딩 - react</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book1'
+                          : 'time_line_item book1'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={codingAppleImg} alt="애플코딩 - typescript" />
+                    <span>애플코딩 - typescript</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book1'
+                          : 'time_line_item book1'
+                      }
+                    ></div>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="stage_4-3">
@@ -844,7 +1796,7 @@ function App() {
               </div>
             </div>
           </div>
-          <div className="content_5">앞으로는 어떤 걸 공부하고 싶나요?</div>
+          <div className="content_5">커리어</div>
         </div>
         <ModalComponent
           open={modalOpen}
