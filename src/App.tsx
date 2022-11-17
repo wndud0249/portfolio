@@ -87,6 +87,7 @@ import sangcoImg from './css/images/books/sangco.png';
 import fastCampusImg from './css/images/books/fastcampus.png';
 import dreamCodingImg from './css/images/books/dream.png';
 import codingAppleImg from './css/images/books/apple.png';
+import doItBookImg from './css/images/books/doit.png';
 
 function App() {
   const [focusedStage, setFocusedStage] = useState('');
@@ -323,6 +324,11 @@ function App() {
       setBigImageSrc('');
     }
   };
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      setFocusedStage('stage_1-1');
+    });
+  }, []);
 
   return (
     <div className="App">
@@ -903,13 +909,13 @@ function App() {
                           <img src={reduxSagaImg} alt="redux-saga" />
                         </li>
                       </ul>
-                      <div className="duration">
-                        <div className="svg_wrapper">
-                          <img src={cornerImg} alt="corner_icon" />
-                        </div>
-                        <h3>작업기간 : </h3>
-                        <p>&nbsp;2022-06-15 ~ 2022-10-25</p>
+                    </div>
+                    <div className="duration">
+                      <div className="svg_wrapper">
+                        <img src={cornerImg} alt="corner_icon" />
                       </div>
+                      <h3>작업기간 : </h3>
+                      <p>&nbsp;2022-06-15 ~ 2022-10-25</p>
                     </div>
                   </section>
                 </article>
@@ -1067,6 +1073,21 @@ function App() {
                 </div>
                 <div className="time_line_list">
                   <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={doItBookImg} alt="Do it! 웹 프로그래밍을 위한 자바스크립트 기본 편" />
+                    <span>Do it! 웹 프로그래밍을 위한 자바스크립트 기본 편</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on book7'
+                          : 'time_line_item book7'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
                     <img src={modernJsBookImg} alt="모던자바스크립트 Deep Dive" />
                     <span>모던자바스크립트 Deep Dive</span>
                   </div>
@@ -1140,6 +1161,7 @@ function App() {
                     ></div>
                   </div>
                 </div>
+
                 <div className="time_line_list">
                   <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
                     <img src={computerBookImg} alt="그래서 컴퓨터는 어떻게 동작하나요?" />
@@ -1208,9 +1230,9 @@ function App() {
                   <div className="time_line_item_wrapper">
                     <div
                       className={
-                        focusedStage === 'stage_4-2'
-                          ? 'time_line_item on book11'
-                          : 'time_line_item book11'
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on video1'
+                          : 'time_line_item video1'
                       }
                     ></div>
                   </div>
@@ -1223,9 +1245,9 @@ function App() {
                   <div className="time_line_item_wrapper">
                     <div
                       className={
-                        focusedStage === 'stage_4-2'
-                          ? 'time_line_item on book12'
-                          : 'time_line_item book12'
+                        focusedStage === 'stage_4-1'
+                          ? 'time_line_item on video2'
+                          : 'time_line_item video2'
                       }
                     ></div>
                   </div>
@@ -1239,23 +1261,8 @@ function App() {
                     <div
                       className={
                         focusedStage === 'stage_4-2'
-                          ? 'time_line_item on book13'
-                          : 'time_line_item book13'
-                      }
-                    ></div>
-                  </div>
-                </div>
-                <div className="time_line_list">
-                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
-                    <img src={sangcoImg} alt="생활코딩 - 리눅스" />
-                    <span>생활코딩 - 리눅스</span>
-                  </div>
-                  <div className="time_line_item_wrapper">
-                    <div
-                      className={
-                        focusedStage === 'stage_4-2'
-                          ? 'time_line_item on book14'
-                          : 'time_line_item book14'
+                          ? 'time_line_item on video3'
+                          : 'time_line_item video3'
                       }
                     ></div>
                   </div>
@@ -1278,36 +1285,7 @@ function App() {
                     ></div>
                   </div>
                 </div>
-                <div className="time_line_list">
-                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
-                    <img src={dreamCodingImg} alt="드림코딩 - 깃 마스터과정" />
-                    <span>드림코딩 - 깃 마스터과정</span>
-                  </div>
-                  <div className="time_line_item_wrapper">
-                    <div
-                      className={
-                        focusedStage === 'stage_4-3'
-                          ? 'time_line_item on book16'
-                          : 'time_line_item book16'
-                      }
-                    ></div>
-                  </div>
-                </div>
-                <div className="time_line_list">
-                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
-                    <img src={dreamCodingImg} alt="드림코딩 - 프론트엔드 필수 브라우저 101" />
-                    <span>드림코딩 - 프론트엔드 필수 브라우저 101</span>
-                  </div>
-                  <div className="time_line_item_wrapper">
-                    <div
-                      className={
-                        focusedStage === 'stage_4-3'
-                          ? 'time_line_item on book17'
-                          : 'time_line_item book17'
-                      }
-                    ></div>
-                  </div>
-                </div>
+
                 <div className="time_line_list">
                   <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
                     <img src={codingAppleImg} alt="애플코딩 - html/css" />
@@ -1394,6 +1372,51 @@ function App() {
                         focusedStage === 'stage_4-3'
                           ? 'time_line_item on book23'
                           : 'time_line_item book23'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={sangcoImg} alt="생활코딩 - 리눅스" />
+                    <span>생활코딩 - 리눅스</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-2'
+                          ? 'time_line_item on book14'
+                          : 'time_line_item book14'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={dreamCodingImg} alt="드림코딩 - 깃 마스터과정" />
+                    <span>드림코딩 - 깃 마스터과정</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-3'
+                          ? 'time_line_item on book16'
+                          : 'time_line_item book16'
+                      }
+                    ></div>
+                  </div>
+                </div>
+                <div className="time_line_list">
+                  <div className={onContent4 ? 'time_line_label on' : 'time_line_label'}>
+                    <img src={dreamCodingImg} alt="드림코딩 - 프론트엔드 필수 브라우저 101" />
+                    <span>드림코딩 - 프론트엔드 필수 브라우저 101</span>
+                  </div>
+                  <div className="time_line_item_wrapper">
+                    <div
+                      className={
+                        focusedStage === 'stage_4-3'
+                          ? 'time_line_item on book17'
+                          : 'time_line_item book17'
                       }
                     ></div>
                   </div>

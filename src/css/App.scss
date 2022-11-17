@@ -477,7 +477,7 @@ article {
     width: 60%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
     .media_wrapper {
       margin-right: 100px;
       position: relative;
@@ -497,43 +497,44 @@ article {
       .images_wrapper {
         width: 600px;
         display: flex;
-        flex-wrap: wrap;
+
         img {
-          width: 198px;
+          width: 98px;
           border: 1px solid #777;
         }
         .big_image {
-          width: 600px;
+          width: 100%;
           position: absolute;
           left: 0;
           img {
+            border: none;
             width: 100%;
-            height: 100%;
-            object-fit: fill;
+            object-fit: scale-down;
+            height: 30vw;
           }
           &.pocari {
-            bottom: 450px;
-            height: 550px;
+            bottom: 120px;
+            background-color: #111;
           }
           &.coupang {
-            bottom: 470px;
-            height: 530px;
+            bottom: 120px;
+            background-color: #222;
           }
           &.xtlv1 {
-            bottom: 345px;
-            height: 500px;
+            bottom: 120px;
+            background-color: #333;
           }
           &.xtladmin {
-            bottom: 230px;
-            height: 400px;
+            bottom: 80px;
+            background-color: #444;
           }
           &.xtlv2 {
-            bottom: 375px;
-            height: 400px;
+            bottom: 120px;
+            background-color: #555;
           }
           &.webinar {
-            bottom: 250px;
-            height: 400px;
+            bottom: 100px;
+            background-color: #666;
           }
         }
       }
@@ -596,7 +597,7 @@ article {
     width: 100vw;
     padding-left: 30px;
     .time_line_header {
-      margin-top: 100px;
+      margin-top: 70px;
       width: 100%;
       min-width: 1200px;
       display: flex;
@@ -614,16 +615,20 @@ article {
     }
 
     .time_line_list {
-      // font-family: 'NotoSansKR';
       font-weight: 100;
+      font-size: 13px;
       display: flex;
       width: 100%;
       min-width: 1200px;
-      height: calc((100vh - 260px) / 24);
+      height: calc((100vh - 260px) / 25);
+      max-height: calc((100vh - 260px) / 25);
+      margin: 2px 0;
       img {
-        height: 100%;
+        height: 90%;
       }
       .time_line_label {
+        font-family: 'NanumSquare';
+        font-weight: 800;
         flex: 2 1 0;
         width: 300px;
         min-width: 300px;
@@ -638,6 +643,9 @@ article {
         &.on {
           opacity: 1;
         }
+        span {
+          margin-left: 8px;
+        }
       }
       .time_line_item_wrapper {
         flex: 12 1 0;
@@ -650,16 +658,17 @@ article {
           background-color: #000;
           height: 100%;
           border-radius: 10px;
+          cursor: pointer;
           &.book1 {
-            left: 20%; // 시작날짜
+            left: calc((8 / 12) * 100%); // 시작날짜
             width: 0;
             transition: width 3s ease-in-out;
             &.on {
-              width: 20%; // 기간
+              width: calc((0.5 / 12) * 100%); // 기간
             }
           }
           &.book2 {
-            left: 30%;
+            left: calc((10 / 12) * 100%); // 시작날짜
             width: 0;
             transition: width 3s;
             &.on {
@@ -699,6 +708,30 @@ article {
             }
           }
           &.book7 {
+            left: 90%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 11%; // 기간
+            }
+          }
+          &.video1 {
+            left: 90%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 11%; // 기간
+            }
+          }
+          &.video2 {
+            left: 90%;
+            width: 0;
+            transition: width 3s;
+            &.on {
+              width: 11%; // 기간
+            }
+          }
+          &.video3 {
             left: 90%;
             width: 0;
             transition: width 3s;
