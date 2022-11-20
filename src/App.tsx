@@ -191,13 +191,14 @@ function App() {
     introPage?.scrollIntoView();
   }, []);
 
-  const onClickHeaderMenu = (e: any) => {
+  const onClickHeaderMenu = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!e?.currentTarget?.dataset?.menu) return;
     setFocusedStage(`${e.currentTarget.dataset.menu}`);
   };
 
   /* 타이핑 */
 
-  let typingTimeOut: any;
+  let typingTimeOut: ReturnType<typeof setTimeout>;
 
   const typingSpeed = 70;
   const deletingSpeed = 30;
@@ -273,12 +274,7 @@ function App() {
   const onMouseLeaveBlog = () => {
     setClickTextShow(false);
   };
-  const onClickModal = () => {
-    setModalOpen(true);
-    modalOpenRef.current = true;
-    setModalTarget('projectVideo');
-    setModalContents(pocariVideo);
-  };
+
   const onClickVideo = (e: React.MouseEvent<HTMLDivElement>) => {
     setModalOpen(true);
     modalOpenRef.current = true;
@@ -320,12 +316,11 @@ function App() {
     }
   };
 
-  const onMouseOverBookTitle = (e: any) => {
-    console.log(e.target);
-    console.log(e.currentTarget);
+  const onMouseOverBookTitle = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!e?.currentTarget?.dataset?.bookTitle) return;
     setFocusedBookTitle(e.currentTarget.dataset.bookTitle);
   };
-  const onMouseLeaveBookTitle = (e: any) => {
+  const onMouseLeaveBookTitle = () => {
     setFocusedBookTitle('');
   };
 
